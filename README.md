@@ -1,2 +1,2 @@
-# HTML5 boilerplate 
-This is my HTML5 boilerplate. I use it to build fast, robust, and adaptable web apps or sites.
+# Eindproject Interaction Design
+Dit is mijn eindproject van Interaction Design over astroïden
