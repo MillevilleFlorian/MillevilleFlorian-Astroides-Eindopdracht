@@ -1,3 +1,31 @@
+:root {
+  --global-color: black;
+  --color-horizon: #009de6;
+  --global-background-color: #c4d5e6;
+  --global-background-color-grid: white;
+  --background-info-astroide: #009de6;
+  --background-info-inputs: #009de6;
+  --astroide-element-color: white;
+  --button-background-color: #282e66;
+  --color-white: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --global-background-color: #282e66;
+    --global-background-color-grid: #8f8e9c;
+    --color-horizon: #2f2f31;
+    --background-info-astroide: #2f2f31;
+    --background-info-inputs: #2f2f31;
+    --global-color: white;
+    --astroide-element-color: #8f8e9c;
+  }
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
 /*
     Elements: Page
     ---
@@ -5,18 +33,19 @@
 */
 
 html {
-    font-size: 16px;
-    line-height: 1.5;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #111;
-    padding: 24px 24px 0;
-    scroll-behavior: smooth;
+  font-size: 1em;
+  line-height: 1.5;
+  /* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; */
+  font-family: 'Poppins', sans-serif;
+  color: var(--global-color);
+  padding: 24px 24px 0;
+  scroll-behavior: smooth;
+  background-color: var(--global-background-color, white);
 }
 
-
-body{
-    max-width: 42em;
-    margin: 0 auto;
+body {
+  max-width: 42em;
+  margin: 0 auto;
 }
 
 /*
@@ -27,10 +56,9 @@ body{
  */
 
 ::selection {
-    background: #44c8f5;
-    color: white;
+  background: #44c8f5;
+  color: white;
 }
-
 
 /*
     Elements: Images
@@ -39,8 +67,8 @@ body{
 */
 
 img {
-    max-width: 100%;
-    vertical-align: top;
+  max-width: 100%;
+  vertical-align: top;
 }
 
 /*
@@ -50,31 +78,30 @@ img {
 */
 
 h1 {
-    font-family: "Times New Roman", serif;
-    font-size: 36px;
-    font-weight: normal;
-    line-height: 40px;
-    margin: 0 0 48px;
+  font-size: calc(36em / 16);
+  font-weight: normal;
+  line-height: 40px;
+  margin: 0 0 48px;
 }
 
 h2 {
-    font-size: 23px;
-    line-height: 32px;
-    margin: 0 0 24px;
+  font-size: calc(23em / 16);
+  line-height: 32px;
+  margin: 0 0 24px;
 }
 
 h3 {
-    font-size: 18px;
-    line-height: 24px;
-    margin: 0 0 24px;
+  font-size: calc(18em / 16);
+  line-height: 24px;
+  margin: 0 0 24px;
 }
 
 h4,
 h5,
 h6 {
-    font-size: 16px;
-    line-height: 24px;
-    margin: 0 0 24px;
+  font-size: calc(16em / 16);
+  line-height: 24px;
+  margin: 0 0 24px;
 }
 
 p,
@@ -84,76 +111,296 @@ dl,
 table,
 address,
 figure {
-    margin: 0 0 24px;
+  margin: 0 0 24px;
 }
 
 ul,
 ol,
 blockquote {
-    font-size: inherit;
-    line-height: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 li ul,
-li ol{
-
+li ol {
 }
 
 blockquote {
-    font-size: italic;
-    font-size: 23px;
-    line-height: 32px;
-    margin: 0 0 24px;
-    font-family: "Times New Roman", serif;
+  font-size: italic;
+  font-size: calc(23em / 16);
+  line-height: 32px;
+  margin: 0 0 24px;
+  font-family: 'Times New Roman', serif;
 }
 
 figcaption {
-    font-size: 12px;
-    line-height: 16px;
-    padding-top: 8px;
-    color: Grey;
+  font-size: calc(12em / 16);
+  line-height: 16px;
+  padding-top: 8px;
+  color: Grey;
 }
 
 hr {
-    border: 0;
-    height: 1px;
-    background: LightGrey;
-    margin: 0 0 24px;
+  border: 0;
+  height: 1px;
+  background: LightGrey;
+  margin: 0 0 24px;
 }
 
 a {
-    color: RoyalBlue;
-    transition: all .1s ease-in-out;
+  color: RoyalBlue;
+  transition: all 0.1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: BlueViolet;
+  color: BlueViolet;
 }
 
 a:hover,
 a:focus {
-    color: Crimson;
+  color: Crimson;
 }
 
 table {
-    width: 100%;
-    border-spacing: 0;
+  width: 100%;
+  border-spacing: 0;
 }
 
 th {
-    text-align: left;
+  text-align: left;
 }
 
 th,
 td {
-    padding: 4px 8px;
-    border-bottom: 1px solid gainsboro;
+  padding: 4px 8px;
+  border-bottom: 1px solid gainsboro;
 }
 
-.odd{
-    background-color: whitesmoke;
+.odd {
+  background-color: whitesmoke;
 }
+
+.o-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 79.5em; /* 79.5 * 16px = 1272 */
+  width: 100%;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: Horizon
+    ---
+    Horizon with earth visualisation
+*/
+.c-horizon {
+  margin-top: 30px;
+  padding-bottom: 0;
+  grid-row-start: 2;
+  grid-column: 1 / span 2;
+  background-color: var(--color-horizon, #009de6);
+  border-radius: 10px;
+  color: var(--color-white);
+}
+
+.c-horizon__info {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 16px;
+}
+.c-horizon__line {
+  border-top: 1px solid var(--global-color-night, white);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: auto;
+}
+
+.c-horizon__time {
+  font-size: calc(12em / 16);
+  line-height: 14px;
+}
+
+.c-horizon__sky-wrapper {
+  position: relative;
+  height: 600px;
+  padding-top: 22px;
+  padding-right: 40px;
+}
+
+.c-horizon__sky {
+  position: relative;
+  height: 100%;
+}
+
+.c-horizon__earth::before {
+  display: block;
+  content: attr(data-date);
+  font-size: calc(12em / 16);
+  line-height: 14px;
+  margin-bottom: 8px;
+}
+
+.c-horizon__earth {
+  position: absolute;
+  left: var(--local-earth-position-left);
+  bottom: var(--local-earth-position-bottom);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  /* transform: translateY(22px); */
+}
+
+.c-horizon__astroide {
+  position: absolute;
+  left: var(--local-astroide-position-left);
+  bottom: var(--local-astroide-position-bottom);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  /* transform: translateY(22px); */
+}
+
+.c-horizon__astroide::before {
+  display: block;
+  content: attr(data-date);
+  font-size: calc(12em / 16);
+  line-height: 14px;
+  margin-bottom: 8px;
+}
+
+.c-earth {
+  width: 44px;
+}
+
+.c-astroide {
+  width: 44px;
+}
+
+/*
+    Component: info
+*/
+
+.c-info-astroide {
+  grid-column-start: 1;
+  background-color: var(--background-info-astroide);
+  margin-right: 16px;
+  padding-left: 16px;
+  padding-bottom: 100px;
+  padding-top: 16px;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.c-info-astroide__element {
+  color: var(--astroide-element-color);
+}
+
+.c-info-inputs {
+  grid-column-start: 2;
+  border-radius: 10px;
+  padding-left: 16px;
+  padding-top: 16px;
+  padding-right: 16px;
+  background-color: var(--background-info-inputs);
+}
+
+/*
+    Component: input
+*/
+
+.c-input {
+  border: 1px solid var(--input-border-color);
+  border-color: var(--input-border-color, black);
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.c-input__number {
+  text-align: center;
+  width: 100%;
+  margin-right: 5px;
+}
+
+.c-input:focus,
+.c-input:active {
+  border: 1px solid #282e66;
+}
+
+/*
+    Component: button
+*/
+
+.c-button {
+  display: flex;
+}
+
+.c-button__element {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--button-background-color);
+  color: var(--color-white);
+  --button-hover-background-color: #295099;
+  padding: 5px;
+  border: 3px solid var(--button-background-color);
+}
+
+.c-button__element:hover {
+  background-color: var(--button-hover-background-color);
+  border-color: var(--button-hover-background-color);
+}
+
+.c-button__element:focus {
+  border: 3px solid var(--button-hover-background-color);
+}
+
+.c-margin {
+  margin-right: 16px;
+}
+/*
+    Component: grid
+*/
+
+.c-grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 22% 1fr;
+  background-color: var(--global-background-color-grid);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #16181a41;
+}
+
+/*
+    Component: header
+*/
+
+.c-header {
+  display: flex;
+  background-color: var(--global-background-color-grid);
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border: 1px solid #16181a41;
+}
+
+.c-header__title {
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 /*
     Media Queries
     ---
@@ -162,37 +409,54 @@ td {
     Modify as content requires.
 */
 
-
 /* Extra small devices (portrait phones, less than 576px)
    No media query since this is the default in Bootstrap
 */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    html{
-        padding: 48px 48px 24px;
-    }
-    h1{
-        font-size: 58px;
-        line-height: 64px;
-    }
+  html {
+    padding: 48px 48px 24px;
+  }
+  h1 {
+    font-size: calc(58em / 16);
+    line-height: 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  .c-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 22% 22% 1fr;
+  }
+  .c-horizon {
+    grid-row-start: 3;
+  }
+  .c-info-inputs {
+    grid-column-start: 1;
+    grid-row-start: 2;
+  }
+  .c-info-astroide {
+    margin-right: 0;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+  }
+  .c-horizon__sky-wrapper {
+    height: 300px;
+  }
+  .c-header {
+    padding-left: 16px;
+  }
 }
 
 /* Large devices (landscape tablets, desktops, 992px and up) */
 @media (min-width: 992px) {
-
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
 }
-
-
-
-
